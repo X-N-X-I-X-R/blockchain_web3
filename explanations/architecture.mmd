@@ -1,0 +1,51 @@
+graph TD
+    %% User Interaction Section
+    subgraph User Interaction
+        A[<b style="font-size:18px;">User</b>]:::userNode
+        A -->|<span style="font-size:16px;">Connects Wallet</span>| B[<b style="font-size:18px;">Frontend: React.js & Web3Modal</b>]:::frontendNode
+        A -->|<span style="font-size:16px;">Navigates to Marketplace</span>| B
+        B -->|<span style="font-size:16px;">Uploads Art Elements</span>| C[<b style="font-size:18px;">API Gateway: Node.js & Express.js</b>]:::backendNode
+    end
+
+    %% Backend Section
+    subgraph Backend Process
+        C -->|<span style="font-size:16px;">Validates Data</span>| D[<b style="font-size:18px;">Validation Layer</b>]:::validationNode
+        D -->|<span style="font-size:16px;">Sends Elements</span>| E[<b style="font-size:18px;">AI Processing: TensorFlow.js & Jimp</b>]:::aiNode
+        E -->|<span style="font-size:16px;">Generates NFT Art</span>| F[<b style="font-size:18px;">Storage: IPFS</b>]:::storageNode
+        F -->|<span style="font-size:16px;">Returns IPFS Hashes</span>| C
+    end
+
+    %% Blockchain Interaction Section
+    subgraph Blockchain
+        C -->|<span style="font-size:16px;">Requests NFT Minting</span>| G[<b style="font-size:18px;">Smart Contracts: OpenZeppelin</b>]:::smartContractNode
+        G -->|<span style="font-size:16px;">Interacts with Polygon</span>| H[<b style="font-size:18px;">Polygon Blockchain</b>]:::blockchainNode
+        H -->|<span style="font-size:16px;">Stores NFT Metadata</span>| F
+        H -->|<span style="font-size:16px;">Returns NFT Address</span>| C
+    end
+
+    %% Marketplace Section
+    subgraph Marketplace
+        A -->|<span style="font-size:16px;">Views Available NFTs</span>| B
+        B -->|<span style="font-size:16px;">Initiates Purchase</span>| C
+        C -->|<span style="font-size:16px;">Validates Ownership</span>| H
+        H -->|<span style="font-size:16px;">Processes Payment</span>| C
+        C -->|<span style="font-size:16px;">Updates Purchase Status</span>| B
+    end
+
+    %% Royalties Section
+    subgraph Royalties Flow
+        A -->|<span style="font-size:16px;">Sells NFT</span>| B
+        B -->|<span style="font-size:16px;">Submits Sale Data</span>| C
+        C -->|<span style="font-size:16px;">Calculates Royalties</span>| G
+        G -->|<span style="font-size:16px;">Distributes Royalties</span>| H
+    end
+
+    %% Node Styles
+    classDef userNode fill:#f4a261,stroke:#333,stroke-width:2px,font-size:18px;
+    classDef frontendNode fill:#2a9d8f,stroke:#333,stroke-width:2px,font-size:18px;
+    classDef backendNode fill:#264653,stroke:#333,stroke-width:2px,font-size:18px;
+    classDef validationNode fill:#e9c46a,stroke:#333,stroke-width:2px,font-size:18px;
+    classDef aiNode fill:#e76f51,stroke:#333,stroke-width:2px,font-size:18px;
+    classDef storageNode fill:#6a4c93,stroke:#333,stroke-width:2px,font-size:18px;
+    classDef smartContractNode fill:#a8dadc,stroke:#333,stroke-width:2px,font-size:18px;
+    classDef blockchainNode fill:#457b9d,stroke:#333,stroke-width:2px,font-size:18px;
